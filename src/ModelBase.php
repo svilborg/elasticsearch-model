@@ -52,12 +52,12 @@ abstract class ModelBase
         return $this->type;
     }
 
-    public function getSettings()
+    public function getDefaultSettings()
     {
         return $this->settings;
     }
 
-    public function getMappings()
+    public function getDefaultMappings()
     {
         return $this->mappings;
     }

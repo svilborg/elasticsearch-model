@@ -23,5 +23,17 @@ class InitTest extends TestCase
         $this->assertTrue($response["acknowledged"]);
     }
 
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testMapping()
+    {
+        $item = new Item();
 
+        $response = $item->getMappings();
+
+        $this->assertTrue(is_array($response["inventory"]["mappings"]));
+    }
 }

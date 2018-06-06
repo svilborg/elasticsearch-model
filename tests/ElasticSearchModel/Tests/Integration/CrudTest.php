@@ -27,6 +27,23 @@ class CrudTest extends TestCase
         $this->assertEquals(1, $response["_shards"]["successful"]);
     }
 
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testCreateDocument()
+    {
+        $item = new Item();
+
+        $response = $item->indexDocument(15, [
+            "name" => "blue",
+            "count" => 24
+        ]);
+
+        $this->assertEquals(1, $response["_shards"]["successful"]);
+    }
+
     public function testRead()
     {
         $item = new Item();
@@ -39,12 +56,13 @@ class CrudTest extends TestCase
         ], $response);
     }
 
-
     public function testUpdate()
     {
         $item = new Item();
 
-        $response = $item->updateDocument(14, ["count" => 24]);
+        $response = $item->updateDocument(14, [
+            "count" => 24
+        ]);
         $response = $item->getDocument(14);
 
         $this->assertEquals([
