@@ -3,6 +3,44 @@ Elasticsearch Models creation Library
 
 #### Usage
 
+Simple model definition
+
+```php
+
+class Item extends ModelBase implements Gettable, Indexable, Updatable, Deletable, Searchable
+{
+    use Get, Index, Update, Delete, Search, Management;
+
+    /**
+     *
+     * @var string
+     */
+    protected $index = "inventory";
+
+    /**
+     *
+     * @var string
+     */
+    protected $type = "items";
+
+}
+
+```
+
+Creating a Document
+
+```php
+$item = new Item();
+
+ $response = $item->indexDocument(15, [
+            "name" => "blue",
+            "count" => 24
+ ]);
+```
+
+
+Exended Model Definition
+
 ```php
 
 class Item extends ModelBase implements Gettable, Indexable, Updatable, Deletable, Searchable
@@ -47,14 +85,13 @@ class Item extends ModelBase implements Gettable, Indexable, Updatable, Deletabl
 
 ```
 
+Initlaizing an Index with mapping
+
 ```php
+
 $item = new Item();
 
- $response = $item->indexDocument(15, [
-            "name" => "blue",
-            "count" => 24
- ]);
+$response = $item->initIndex();
+
 ```
-
-
 
