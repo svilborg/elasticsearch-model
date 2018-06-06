@@ -30,6 +30,14 @@ abstract class ModelBase
         $this->client = $client ?? ClientBuilder::create()->build();
     }
 
+    public function getIndex() {
+        return $this->index;
+    }
+
+    public function getType() {
+        return $this->type;
+    }
+
     protected function mergeParams($params)
     {
         return array_merge($this->getDefaultParams(), $params);

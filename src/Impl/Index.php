@@ -2,6 +2,11 @@
 namespace ElasticSearchModel\Impl;
 
 trait Index  {
+    /**
+     *
+     * @var \Elasticsearch\Client
+     */
+    protected $client;
 
     public function index(array $params)
     {

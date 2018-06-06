@@ -3,6 +3,12 @@ namespace ElasticSearchModel\Impl;
 
 trait Delete  {
 
+    /**
+     *
+     * @var \Elasticsearch\Client
+     */
+    protected $client;
+
     public function delete(array $params)
     {
         $params = $this->mergeParams($params);

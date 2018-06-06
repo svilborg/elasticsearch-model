@@ -3,8 +3,13 @@ namespace ElasticSearchModel\Impl;
 
 trait Management
 {
+    /**
+     *
+     * @var \Elasticsearch\Client
+     */
+    protected $client;
 
-    protected function getSettings()
+    public function getSettings()
     {
         $params = [
             'index' => $this->index
@@ -17,11 +22,33 @@ trait Management
      * @param string $index
      * @return array
      */
-    protected function getMappings()
+    public function getMappings()
     {
         $params = [
             'index' => $this->index
         ];
         return $this->client->indices()->getMapping($params);
+    }
+
+    public function createIndex($body)
+    {
+        $params = [
+            'index' => $this->index,
+            'body' => $body
+        ];
+
+        $response = $this->client->indices()->create($params);
+
+        return $response;
+    }
+
+    public function deleteIndex () {
+        $params = [
+            'index' => $this->index
+        ];
+
+        $response = $client->indices()->delete($params);
+
+        return $response;
     }
 }

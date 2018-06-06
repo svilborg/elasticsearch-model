@@ -3,6 +3,12 @@ namespace ElasticSearchModel\Impl;
 
 trait Get {
 
+    /**
+     *
+     * @var \Elasticsearch\Client
+     */
+    protected $client;
+
     public function get(array $params)
     {
         $params = $this->mergeParams($params);
