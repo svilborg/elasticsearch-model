@@ -3,6 +3,7 @@ namespace ElasticSearchModel\Impl;
 
 trait Management
 {
+
     /**
      *
      * @var \Elasticsearch\Client
@@ -30,6 +31,31 @@ trait Management
         return $this->client->indices()->getMapping($params);
     }
 
+    /**
+     *
+     * @param string $body
+     * @return array|callable
+     */
+    public function initIndex()
+    {
+        $params = [
+            'index' => $this->index,
+            'body' => [
+                'settings' => $this->settings,
+                'mappings' => $this->mappings
+            ]
+        ];
+
+        $response = $this->client->indices()->create($params);
+
+        return $response;
+    }
+
+    /**
+     *
+     * @param string $body
+     * @return array|callable
+     */
     public function createIndex($body)
     {
         $params = [
@@ -42,13 +68,56 @@ trait Management
         return $response;
     }
 
-    public function deleteIndex () {
+    /**
+     *
+     * @return array|callable
+     */
+    public function deleteIndex()
+    {
         $params = [
             'index' => $this->index
         ];
 
-        $response = $client->indices()->delete($params);
+        $response = $this->client->indices()->delete($params);
 
         return $response;
+    }
+
+    /**
+     *
+     * @param string $index
+     * @return boolean
+     */
+    public function existsIndex($index)
+    {
+        $params = [
+            'index' => $this->index
+        ];
+
+        return $this->client->indices()->exists($params);
+    }
+
+    /**
+     *
+     * @param string $index
+     */
+    public function openIndex($index)
+    {
+        $params = [
+            'index' => $this->index
+        ];
+        $this->client->indices()->open($params);
+    }
+
+    /**
+     *
+     * @param string $index
+     */
+    public function closeIndex($index)
+    {
+        $params = [
+            'index' => $this->index
+        ];
+        $this->client->indices()->close($params);
     }
 }

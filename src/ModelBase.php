@@ -21,6 +21,18 @@ abstract class ModelBase
 
     /**
      *
+     * @var array
+     */
+    protected $settings = [];
+
+    /**
+     *
+     * @var array
+     */
+    protected $mappings = [];
+
+    /**
+     *
      * @var Client
      */
     protected $client;
@@ -30,12 +42,24 @@ abstract class ModelBase
         $this->client = $client ?? ClientBuilder::create()->build();
     }
 
-    public function getIndex() {
+    public function getIndex()
+    {
         return $this->index;
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
+    }
+
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    public function getMappings()
+    {
+        return $this->mappings;
     }
 
     protected function mergeParams($params)

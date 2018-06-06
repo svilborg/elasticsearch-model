@@ -59,9 +59,6 @@ class CrudTest extends TestCase
 
         $response = $item->deleteDocument(14);
 
-        $this->assertEquals([
-            "name" => "red",
-            "count" => 24
-        ], $response);
+        $this->assertEquals(1, $response["_shards"]["successful"]);
     }
 }
