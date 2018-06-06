@@ -1,0 +1,24 @@
+{
+	"name": "svilborg/elasticsearch-model",
+	"type": "library",
+	"require": {
+		"aws/aws-sdk-php": "^3.61",
+		"elasticsearch/elasticsearch": "~5.0"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.9.4",
+		"phpstan/phpstan-shim": "0.9.1",
+		"phpunit/phpunit": "6.3.0",
+		"fzaninotto/faker": "^1.7"
+	},
+	"autoload": {
+		"psr-4": {
+			"ElasticSearchModel\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"ElasticSearchModel\\Tests\\": "tests/ElasticSearchModel/Tests/"
+		}
+	}
+}
