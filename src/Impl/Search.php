@@ -48,4 +48,13 @@ trait Search {
 
         return $response;
     }
+
+    public function count(array $params)
+    {
+        $params = $this->mergeParams($params);
+
+        $response = $this->client->count($params);
+
+        return $response;
+    }
 }

@@ -21,6 +21,7 @@ trait Index  {
     {
         $params = [
             "id" => $id,
+            "refresh" => true,
             "body" => $body
         ];
 

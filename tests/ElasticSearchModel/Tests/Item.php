@@ -43,7 +43,7 @@ class Item extends ModelBase implements Gettable, Indexable, Updatable, Deletabl
                     'copy_to' => 'combined'
                 ],
                 'count' => [
-                    'type' => 'keyword',
+                    'type' => 'integer',
                     'copy_to' => 'combined'
                 ],
                 'combined' => [
