@@ -18,20 +18,18 @@ trait Search {
         return $response;
     }
 
-    public function searchDocument(array $body)
+    public function searchDocument(array $query)
     {
         $params = [
-            "body" => $body
+            "body" => ['query' => $query]
         ];
 
-        $params = $this->mergeParams($params);
-
-        $response = $this->client->search($params);
+        $response = $this->search($params);
 
         return $response;
     }
 
-    public function searchPaginate($body, $page, $perPage = 10)
+    public function searchPaginate(array $query, $page, $perPage = 10)
     {
         $from = max(0, $perPage * ($page - 1));
         $size = $perPage;
@@ -39,12 +37,10 @@ trait Search {
         $params = [
             'from' => $from,
             'size' => $size,
-            "body" => $body
+            "body" => ['query' => $query]
         ];
 
-        $params = $this->mergeParams($params);
-
-        $response = $this->client->search($params);
+        $response = $this->search($params);
 
         return $response;
     }

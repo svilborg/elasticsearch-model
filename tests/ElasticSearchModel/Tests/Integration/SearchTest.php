@@ -38,14 +38,16 @@ class SearchTest extends TestCase
             // echo "\n";
         }
 
-        $response = $item->searchDocument([
-            "query" => [
-                "match_all" => new \stdClass()
-            ],
-            'aggs' => [
-                'count_avg' => [
-                    'avg' => [
-                        'field' => 'count'
+        $response = $item->search([
+            "body" => [
+                "query" => [
+                    "match_all" => new \stdClass()
+                ],
+                'aggs' => [
+                    'count_avg' => [
+                        'avg' => [
+                            'field' => 'count'
+                        ]
                     ]
                 ]
             ]

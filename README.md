@@ -64,7 +64,7 @@ class Item extends ModelBase implements Gettable, Indexable, Updatable, Deletabl
         'number_of_replicas' => 0
     ];
 
-    protected $mappings = [
+    protected $mapping = [
         '_default_' => [
             'properties' => [
                 'name' => [

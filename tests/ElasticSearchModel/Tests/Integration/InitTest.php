@@ -7,12 +7,42 @@ use ElasticSearchModel\Tests\Item;
 class InitTest extends TestCase
 {
 
+    public function testInitState()
+    {
+        $item = new Item();
+
+        $this->assertEquals("inventory", $item->getIndex());
+        $this->assertEquals("items", $item->getType());
+
+        $this->assertEquals([
+            '_default_' => [
+                'properties' => [
+                    'name' => [
+                        'type' => 'keyword',
+                        'copy_to' => 'combined'
+                    ],
+                    'count' => [
+                        'type' => 'integer',
+                        'copy_to' => 'combined'
+                    ],
+                    'combined' => [
+                        'type' => 'keyword'
+                    ]
+                ]
+            ]
+        ], $item->getDefaultMappings());
+
+        $this->assertEquals([
+            'number_of_shards' => 1,
+            'number_of_replicas' => 0
+        ], $item->getDefaultSettings());
+    }
+
     /**
-     * A basic test example.
      *
      * @return void
      */
-    public function testCreate()
+    public function testCreateIndex()
     {
         $item = new Item();
 
@@ -32,7 +62,7 @@ class InitTest extends TestCase
     {
         $item = new Item();
 
-        $response = $item->getMappings();
+        $response = $item->getMapping();
 
         $this->assertTrue(is_array($response["inventory"]["mappings"]));
     }

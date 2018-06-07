@@ -29,7 +29,7 @@ abstract class ModelBase
      *
      * @var array
      */
-    protected $mappings = [];
+    protected $mapping = [];
 
     /**
      *
@@ -59,7 +59,7 @@ abstract class ModelBase
 
     public function getDefaultMappings()
     {
-        return $this->mappings;
+        return $this->mapping;
     }
 
     protected function mergeParams($params)

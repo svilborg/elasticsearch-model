@@ -23,7 +23,7 @@ trait Management
      * @param string $index
      * @return array
      */
-    public function getMappings()
+    public function getMapping()
     {
         $params = [
             'index' => $this->index
@@ -42,7 +42,7 @@ trait Management
             'index' => $this->index,
             'body' => [
                 'settings' => $this->settings,
-                'mappings' => $this->mappings
+                'mappings' => $this->mapping
             ]
         ];
 

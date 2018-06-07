@@ -6,7 +6,7 @@ interface Searchable
 
     public function search(array $params);
 
-    public function searchDocument(array $body);
+    public function searchDocument(array $query);
 
-    public function searchPaginate($body, $page, $perPage = 10);
+    public function searchPaginate(array $query, $page, $perPage = 10);
 }
